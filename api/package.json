@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@redwoodjs/api": "6.0.0-canary.649",
+    "@redwoodjs/api-server": "6.0.0-canary.649",
     "@redwoodjs/auth-dbauth-api": "6.0.0-canary.649",
     "@redwoodjs/graphql-server": "6.0.0-canary.649"
   }

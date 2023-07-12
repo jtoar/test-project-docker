@@ -1,0 +1,21 @@
+# fly.toml app configuration file generated for redwood-test-project on 2023-07-13T14:53:11-07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "redwood-test-project"
+primary_region = "sjc"
+
+[build]
+  build-target = "serve_api"
+
+[env]
+  REDWOOD_DISABLE_TELEMETRY = "1"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
