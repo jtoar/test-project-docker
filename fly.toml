@@ -7,15 +7,25 @@ app = "redwood-test-project"
 primary_region = "sjc"
 
 [build]
-  build-target = "serve_api"
+  build-target = "serve"
+
+[processes]
+  api = "/app/node_modules/.bin/rw-server api"
+  web = "/app/node_modules/.bin/rw-server web --apiHost http://0.0.0.0:8911"
 
 [env]
   REDWOOD_DISABLE_TELEMETRY = "1"
 
-[http_service]
+[[services]]
   internal_port = 8080
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
   min_machines_running = 0
-  processes = ["app"]
+  processes = ["web"]
+
+[[services]]
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["api"]
