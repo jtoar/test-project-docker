@@ -22824,6 +22824,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "web@workspace:web"
   dependencies:
+    "@redwoodjs/api-server": 6.0.0-canary.649
     "@redwoodjs/auth-dbauth-web": 6.0.0-canary.649
     "@redwoodjs/forms": 6.0.0-canary.649
     "@redwoodjs/router": 6.0.0-canary.649
