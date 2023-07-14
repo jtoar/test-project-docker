@@ -8044,7 +8044,11 @@ __metadata:
     "@redwoodjs/api": 6.0.0-canary.649
     "@redwoodjs/api-server": 6.0.0-canary.649
     "@redwoodjs/auth-dbauth-api": 6.0.0-canary.649
+    "@redwoodjs/fastify": 6.0.0-canary.649+faea0f068
     "@redwoodjs/graphql-server": 6.0.0-canary.649
+    "@redwoodjs/project-config": 6.0.0-canary.649+faea0f068
+    chalk: 4.1.2
+    fastify: ^4.19.2
   languageName: unknown
   linkType: soft
 
@@ -12691,7 +12695,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fastify@npm:4.19.2":
+"fastify@npm:4.19.2, fastify@npm:^4.19.2":
   version: 4.19.2
   resolution: "fastify@npm:4.19.2"
   dependencies:
