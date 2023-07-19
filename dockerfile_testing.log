@@ -72,6 +72,33 @@ Results:
 Result:PASS [Total:3] [Passed:2] [Failed:0] [Warn:0] [Skipped:1]
 
 
+Dockle results:
+FATAL	- DKL-DI-0005: Clear apt-get caches
+	* Use 'rm -rf /var/lib/apt/lists' after 'apt-get install|update' : RUN /bin/sh -c apt-get update || : && apt-get install -y     python3     build-essential # buildkit
+WARN	- CIS-DI-0001: Create a user for the container
+	* Last user should not be root
+INFO	- CIS-DI-0005: Enable Content trust for Docker
+	* export DOCKER_CONTENT_TRUST=1 before docker pull/build
+INFO	- CIS-DI-0006: Add HEALTHCHECK instruction to the container image
+	* not found HEALTHCHECK statement
+INFO	- CIS-DI-0008: Confirm safety of setuid/setgid files
+	* setuid file: urwxr-xr-x usr/bin/newgrp
+	* setgid file: grwxr-xr-x usr/bin/wall
+	* setuid file: urwxr-xr-x usr/bin/passwd
+	* setuid file: urwxr-xr-x usr/bin/umount
+	* setuid file: urwxr-xr-x usr/bin/chsh
+	* setgid file: grwxr-xr-x usr/bin/chage
+	* setuid file: urwxr-xr-x usr/bin/gpasswd
+	* setgid file: grwxr-xr-x usr/bin/expiry
+	* setuid file: urwxr-xr-x usr/bin/mount
+	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
+	* setuid file: urwxr-xr-x usr/bin/su
+	* setuid file: urwxr-xr-x usr/bin/chfn
+INFO	- DKL-LI-0003: Only put necessary files
+	* unnecessary file : app/node_modules/@storybook/codemod/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
+	* unnecessary file : app/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
+
+
 ========================================================================================================================
 api_build
 ========================================================================================================================
@@ -150,6 +177,33 @@ Results:
 Result:PASS [Total:3] [Passed:2] [Failed:0] [Warn:0] [Skipped:1]
 
 
+Dockle results:
+FATAL	- DKL-DI-0005: Clear apt-get caches
+	* Use 'rm -rf /var/lib/apt/lists' after 'apt-get install|update' : RUN /bin/sh -c apt-get update || : && apt-get install -y     python3     build-essential # buildkit
+WARN	- CIS-DI-0001: Create a user for the container
+	* Last user should not be root
+INFO	- CIS-DI-0005: Enable Content trust for Docker
+	* export DOCKER_CONTENT_TRUST=1 before docker pull/build
+INFO	- CIS-DI-0006: Add HEALTHCHECK instruction to the container image
+	* not found HEALTHCHECK statement
+INFO	- CIS-DI-0008: Confirm safety of setuid/setgid files
+	* setgid file: grwxr-xr-x usr/bin/chage
+	* setuid file: urwxr-xr-x usr/bin/chsh
+	* setuid file: urwxr-xr-x usr/bin/chfn
+	* setuid file: urwxr-xr-x usr/bin/passwd
+	* setuid file: urwxr-xr-x usr/bin/gpasswd
+	* setuid file: urwxr-xr-x usr/bin/newgrp
+	* setuid file: urwxr-xr-x usr/bin/umount
+	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
+	* setuid file: urwxr-xr-x usr/bin/mount
+	* setuid file: urwxr-xr-x usr/bin/su
+	* setgid file: grwxr-xr-x usr/bin/expiry
+	* setgid file: grwxr-xr-x usr/bin/wall
+INFO	- DKL-LI-0003: Only put necessary files
+	* unnecessary file : app/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
+	* unnecessary file : app/node_modules/@storybook/codemod/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
+
+
 ========================================================================================================================
 web_build
 ========================================================================================================================
@@ -223,6 +277,33 @@ Results:
   SKIP: highestWastedBytes: rule disabled
   PASS: lowestEfficiency
 Result:PASS [Total:3] [Passed:2] [Failed:0] [Warn:0] [Skipped:1]
+
+
+Dockle results:
+FATAL	- DKL-DI-0005: Clear apt-get caches
+	* Use 'rm -rf /var/lib/apt/lists' after 'apt-get install|update' : RUN /bin/sh -c apt-get update || : && apt-get install -y     python3     build-essential # buildkit
+WARN	- CIS-DI-0001: Create a user for the container
+	* Last user should not be root
+INFO	- CIS-DI-0005: Enable Content trust for Docker
+	* export DOCKER_CONTENT_TRUST=1 before docker pull/build
+INFO	- CIS-DI-0006: Add HEALTHCHECK instruction to the container image
+	* not found HEALTHCHECK statement
+INFO	- CIS-DI-0008: Confirm safety of setuid/setgid files
+	* setgid file: grwxr-xr-x usr/bin/expiry
+	* setuid file: urwxr-xr-x usr/bin/mount
+	* setuid file: urwxr-xr-x usr/bin/newgrp
+	* setuid file: urwxr-xr-x usr/bin/su
+	* setuid file: urwxr-xr-x usr/bin/passwd
+	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
+	* setuid file: urwxr-xr-x usr/bin/umount
+	* setuid file: urwxr-xr-x usr/bin/gpasswd
+	* setgid file: grwxr-xr-x usr/bin/chage
+	* setuid file: urwxr-xr-x usr/bin/chsh
+	* setgid file: grwxr-xr-x usr/bin/wall
+	* setuid file: urwxr-xr-x usr/bin/chfn
+INFO	- DKL-LI-0003: Only put necessary files
+	* unnecessary file : app/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
+	* unnecessary file : app/node_modules/@storybook/codemod/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
 
 
 ========================================================================================================================
@@ -308,6 +389,30 @@ Results:
 Result:PASS [Total:3] [Passed:2] [Failed:0] [Warn:0] [Skipped:1]
 
 
+Dockle results:
+FATAL	- DKL-DI-0005: Clear apt-get caches
+	* Use 'rm -rf /var/lib/apt/lists' after 'apt-get install|update' : RUN /bin/sh -c apt-get update || : && apt-get install -y     openssl # buildkit
+WARN	- CIS-DI-0001: Create a user for the container
+	* Last user should not be root
+INFO	- CIS-DI-0005: Enable Content trust for Docker
+	* export DOCKER_CONTENT_TRUST=1 before docker pull/build
+INFO	- CIS-DI-0006: Add HEALTHCHECK instruction to the container image
+	* not found HEALTHCHECK statement
+INFO	- CIS-DI-0008: Confirm safety of setuid/setgid files
+	* setgid file: grwxr-xr-x usr/bin/chage
+	* setuid file: urwxr-xr-x usr/bin/mount
+	* setuid file: urwxr-xr-x usr/bin/newgrp
+	* setuid file: urwxr-xr-x usr/bin/umount
+	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
+	* setuid file: urwxr-xr-x usr/bin/chfn
+	* setgid file: grwxr-xr-x usr/bin/wall
+	* setgid file: grwxr-xr-x usr/bin/expiry
+	* setuid file: urwxr-xr-x usr/bin/passwd
+	* setuid file: urwxr-xr-x usr/bin/chsh
+	* setuid file: urwxr-xr-x usr/bin/gpasswd
+	* setuid file: urwxr-xr-x usr/bin/su
+
+
 ========================================================================================================================
 serve_web
 ========================================================================================================================
@@ -378,6 +483,28 @@ Results:
   SKIP: highestWastedBytes: rule disabled
   PASS: lowestEfficiency
 Result:PASS [Total:3] [Passed:2] [Failed:0] [Warn:0] [Skipped:1]
+
+
+Dockle results:
+WARN	- CIS-DI-0001: Create a user for the container
+	* Last user should not be root
+INFO	- CIS-DI-0005: Enable Content trust for Docker
+	* export DOCKER_CONTENT_TRUST=1 before docker pull/build
+INFO	- CIS-DI-0006: Add HEALTHCHECK instruction to the container image
+	* not found HEALTHCHECK statement
+INFO	- CIS-DI-0008: Confirm safety of setuid/setgid files
+	* setuid file: urwxr-xr-x usr/bin/gpasswd
+	* setgid file: grwxr-xr-x usr/bin/wall
+	* setgid file: grwxr-xr-x usr/bin/chage
+	* setuid file: urwxr-xr-x usr/bin/newgrp
+	* setgid file: grwxr-xr-x usr/bin/expiry
+	* setuid file: urwxr-xr-x usr/bin/mount
+	* setuid file: urwxr-xr-x usr/bin/su
+	* setuid file: urwxr-xr-x usr/bin/passwd
+	* setuid file: urwxr-xr-x usr/bin/chfn
+	* setuid file: urwxr-xr-x usr/bin/umount
+	* setuid file: urwxr-xr-x usr/bin/chsh
+	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
 
 
 ========================================================================================================================
@@ -456,6 +583,30 @@ Results:
   SKIP: highestWastedBytes: rule disabled
   PASS: lowestEfficiency
 Result:PASS [Total:3] [Passed:2] [Failed:0] [Warn:0] [Skipped:1]
+
+
+Dockle results:
+FATAL	- DKL-DI-0005: Clear apt-get caches
+	* Use 'rm -rf /var/lib/apt/lists' after 'apt-get install|update' : RUN /bin/sh -c apt-get update || : && apt-get install -y     openssl # buildkit
+WARN	- CIS-DI-0001: Create a user for the container
+	* Last user should not be root
+INFO	- CIS-DI-0005: Enable Content trust for Docker
+	* export DOCKER_CONTENT_TRUST=1 before docker pull/build
+INFO	- CIS-DI-0006: Add HEALTHCHECK instruction to the container image
+	* not found HEALTHCHECK statement
+INFO	- CIS-DI-0008: Confirm safety of setuid/setgid files
+	* setgid file: grwxr-xr-x usr/bin/chage
+	* setuid file: urwxr-xr-x usr/bin/chsh
+	* setuid file: urwxr-xr-x usr/bin/su
+	* setuid file: urwxr-xr-x usr/bin/chfn
+	* setgid file: grwxr-xr-x usr/bin/wall
+	* setgid file: grwxr-xr-x usr/bin/expiry
+	* setuid file: urwxr-xr-x usr/bin/mount
+	* setuid file: urwxr-xr-x usr/bin/umount
+	* setuid file: urwxr-xr-x usr/bin/gpasswd
+	* setuid file: urwxr-xr-x usr/bin/newgrp
+	* setuid file: urwxr-xr-x usr/bin/passwd
+	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
 
 
 ========================================================================================================================
@@ -537,5 +688,33 @@ Results:
   SKIP: highestWastedBytes: rule disabled
   PASS: lowestEfficiency
 Result:PASS [Total:3] [Passed:2] [Failed:0] [Warn:0] [Skipped:1]
+
+
+Dockle results:
+FATAL	- DKL-DI-0005: Clear apt-get caches
+	* Use 'rm -rf /var/lib/apt/lists' after 'apt-get install|update' : RUN /bin/sh -c apt-get update || : && apt-get install -y     curl # buildkit
+	* Use 'rm -rf /var/lib/apt/lists' after 'apt-get install|update' : RUN /bin/sh -c apt-get update || : && apt-get install -y     python3     build-essential # buildkit
+WARN	- CIS-DI-0001: Create a user for the container
+	* Last user should not be root
+INFO	- CIS-DI-0005: Enable Content trust for Docker
+	* export DOCKER_CONTENT_TRUST=1 before docker pull/build
+INFO	- CIS-DI-0006: Add HEALTHCHECK instruction to the container image
+	* not found HEALTHCHECK statement
+INFO	- CIS-DI-0008: Confirm safety of setuid/setgid files
+	* setuid file: urwxr-xr-x usr/bin/newgrp
+	* setuid file: urwxr-xr-x usr/bin/su
+	* setgid file: grwxr-xr-x usr/bin/expiry
+	* setuid file: urwxr-xr-x usr/bin/umount
+	* setuid file: urwxr-xr-x usr/bin/passwd
+	* setgid file: grwxr-xr-x usr/bin/wall
+	* setuid file: urwxr-xr-x usr/bin/chfn
+	* setuid file: urwxr-xr-x usr/bin/chsh
+	* setuid file: urwxr-xr-x usr/bin/mount
+	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
+	* setgid file: grwxr-xr-x usr/bin/chage
+	* setuid file: urwxr-xr-x usr/bin/gpasswd
+INFO	- DKL-LI-0003: Only put necessary files
+	* unnecessary file : app/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
+	* unnecessary file : app/node_modules/@storybook/codemod/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
 
 

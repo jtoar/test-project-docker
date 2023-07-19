@@ -75,8 +75,6 @@ for target in $available_targets; do
   CI=1 dive "dockerfile_testing:$target" | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" >> "$output_file"
   echo >> "$output_file"
 
-  continue
-
   # Run dockle on the target
   echo "   -> dockle"
   echo "Dockle results:" >> "$output_file"
