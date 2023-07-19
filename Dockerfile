@@ -1,3 +1,17 @@
+# JGMW Working Notes
+#
+# TODO:
+# - Set a user
+#   - I think node is owned by the node user? Will check the leftlane example
+#
+# Files often flagged as inefficient:
+# - /tmp/v8-compile-cache-...
+#   - I think we can remove this, see: https://github.com/nodejs/docker-node/issues/1326
+# - /var/cache/debconf/templates
+#   - See: https://github.com/debuerreotype/debuerreotype/issues/95
+#
+# ==================================================
+
 FROM node:18-slim as base
 
 # To stop yarn install from over-logging.
@@ -5,7 +19,8 @@ ENV CI=1
 
 RUN apt-get update || : && apt-get install -y \
     python3 \
-    build-essential
+    build-essential \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN yarn cache clean
 
@@ -55,7 +70,8 @@ ENV CI=1 \
     NODE_ENV=production
 
 RUN apt-get update || : && apt-get install -y \
-    openssl
+    openssl \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -117,7 +133,8 @@ ENV CI=1 \
     NODE_ENV=production
 
 RUN apt-get update || : && apt-get install -y \
-    openssl
+    openssl \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -148,7 +165,8 @@ ENTRYPOINT [ "/bin/bash" ]
 FROM base as console
 
 RUN apt-get update || : && apt-get install -y \
-    curl
+    curl \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY api api
 COPY web web
