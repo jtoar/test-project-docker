@@ -5,32 +5,14 @@
 #####
 
 services:
-# - name: test-project-docker-web
-#   type: web
-#   runtime: docker
-#   dockerfilePath: ./Dockerfile.web
-#   branch: render
+- name: test-project-docker-web
+  type: web
 
-#   env: static
-#   # buildCommand: yarn install && yarn rw deploy render web
-#   staticPublishPath: ./web/dist
-#   envVars:
-#   - key: NODE_VERSION
-#     value: 16
-#   - key: SKIP_INSTALL_DEPS
-#     value: true
-#   routes:
-#   - type: rewrite
-#     source: /.redwood/functions/*
-#####
-# NOTE: replace destination api url after first deploy to Render
-# example:
-#   destination: https://myredwoodproject-api.onrender.com/*
-#####
-  #   destination: replace_with_api_url/*
-  # - type: rewrite
-  #   source: /*
-  #   destination: /index.html
+  runtime: docker
+  dockerfilePath: ./Dockerfile.web
+
+  plan: free
+  region: oregon
 
 - name: test-project-docker-api
   type: web
