@@ -39,7 +39,7 @@ FROM node:18-slim as serve_web
 
 ENV CI=1 \
     NODE_ENV=production \
-    API_HOST=https://test-project-docker-api.onrender.com
+    API_HOST=https://test-project-docker-api-504y.onrender.com/
 
 WORKDIR /app
 
