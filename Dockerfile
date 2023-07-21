@@ -120,4 +120,20 @@ COPY --chown=node:node graphql.config.js .
 
 COPY --chown=node:node --from=web_build /home/node/app/web/dist /home/node/app/web/dist
 
-CMD [ "node_modules/.bin/rw-server", "web", "--apiHost", $API_HOST ]
+# Shell form is used to allow for variable substitution
+CMD "node_modules/.bin/rw-server" "web" "--apiHost" "$API_HOST"
+
+# console
+# ------------------------------------------------
+FROM base as console
+
+# Note if you want to add any development packages you will need to do the following
+# USER root
+# RUN apt-get update || : && apt-get install -y \
+#     curl
+# USER node
+
+COPY --chown=node:node api api
+COPY --chown=node:node web web
+COPY --chown=node:node scripts scripts
+

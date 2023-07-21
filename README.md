@@ -96,6 +96,26 @@ yarn rw test
 
 To make the integration even more seamless, Redwood augments Jest with database [scenarios](https://redwoodjs.com/docs/testing.md#scenarios)  and [GraphQL mocking](https://redwoodjs.com/docs/testing.md#mocking-graphql-calls).
 
+## Docker
+
+For local development you can quickly get started by first building the image(s) using:
+
+```
+docker compose build
+```
+
+In order to run commands like migrations first run a console:
+
+```
+docker compose run --rm console /bin/bash
+```
+
+Then run any desired Redwood commands in the console. For example to migrate the db:
+
+```
+yarn rw prisma migrate dev
+```
+
 ## Ship it
 
 Redwood is designed for both serverless deploy targets like Netlify and Vercel and serverful deploy targets like Render and AWS:
