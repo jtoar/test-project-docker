@@ -1,12 +1,12 @@
 ========================================================================================================================
-development
+base
 ========================================================================================================================
 Docker image size:
 1.17GB
 
 Dive results:
   Using default CI config
-Image Source: docker://dockerfile_testing:development
+Image Source: docker://dockerfile_testing:base
 Fetching image... (this can take a while for large images)
 Analyzing image...
   efficiency: 99.1142 %
@@ -79,21 +79,21 @@ Dockle results:
 INFO	- CIS-DI-0006: Add HEALTHCHECK instruction to the container image
 	* not found HEALTHCHECK statement
 INFO	- CIS-DI-0008: Confirm safety of setuid/setgid files
-	* setgid file: grwxr-xr-x usr/bin/expiry
-	* setuid file: urwxr-xr-x usr/bin/chfn
-	* setuid file: urwxr-xr-x usr/bin/mount
-	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
-	* setuid file: urwxr-xr-x usr/bin/gpasswd
-	* setgid file: grwxr-xr-x usr/bin/chage
-	* setuid file: urwxr-xr-x usr/bin/chsh
-	* setgid file: grwxr-xr-x usr/bin/wall
-	* setuid file: urwxr-xr-x usr/bin/umount
 	* setuid file: urwxr-xr-x usr/bin/passwd
-	* setuid file: urwxr-xr-x usr/bin/su
+	* setuid file: urwxr-xr-x usr/bin/umount
 	* setuid file: urwxr-xr-x usr/bin/newgrp
+	* setuid file: urwxr-xr-x usr/bin/mount
+	* setuid file: urwxr-xr-x usr/bin/su
+	* setuid file: urwxr-xr-x usr/bin/chsh
+	* setgid file: grwxr-xr-x usr/bin/expiry
+	* setuid file: urwxr-xr-x usr/bin/gpasswd
+	* setuid file: urwxr-xr-x usr/bin/chfn
+	* setgid file: grwxr-xr-x usr/bin/chage
+	* setgid file: grwxr-xr-x usr/bin/wall
+	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
 INFO	- DKL-LI-0003: Only put necessary files
-	* unnecessary file : home/node/app/node_modules/@storybook/codemod/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
 	* unnecessary file : home/node/app/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
+	* unnecessary file : home/node/app/node_modules/@storybook/codemod/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
 
 
 ========================================================================================================================
@@ -181,21 +181,21 @@ Dockle results:
 INFO	- CIS-DI-0006: Add HEALTHCHECK instruction to the container image
 	* not found HEALTHCHECK statement
 INFO	- CIS-DI-0008: Confirm safety of setuid/setgid files
-	* setuid file: urwxr-xr-x usr/bin/su
-	* setgid file: grwxr-xr-x usr/bin/chage
-	* setuid file: urwxr-xr-x usr/bin/gpasswd
-	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
-	* setuid file: urwxr-xr-x usr/bin/chsh
-	* setuid file: urwxr-xr-x usr/bin/chfn
-	* setuid file: urwxr-xr-x usr/bin/passwd
-	* setgid file: grwxr-xr-x usr/bin/wall
 	* setgid file: grwxr-xr-x usr/bin/expiry
 	* setuid file: urwxr-xr-x usr/bin/umount
-	* setuid file: urwxr-xr-x usr/bin/mount
+	* setgid file: grwxr-xr-x usr/bin/wall
+	* setgid file: grwxr-xr-x usr/bin/chage
+	* setuid file: urwxr-xr-x usr/bin/su
+	* setuid file: urwxr-xr-x usr/bin/chsh
+	* setuid file: urwxr-xr-x usr/bin/gpasswd
+	* setuid file: urwxr-xr-x usr/bin/passwd
+	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
 	* setuid file: urwxr-xr-x usr/bin/newgrp
+	* setuid file: urwxr-xr-x usr/bin/chfn
+	* setuid file: urwxr-xr-x usr/bin/mount
 INFO	- DKL-LI-0003: Only put necessary files
-	* unnecessary file : home/node/app/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
 	* unnecessary file : home/node/app/node_modules/@storybook/codemod/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
+	* unnecessary file : home/node/app/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
 
 
 ========================================================================================================================
@@ -285,21 +285,21 @@ Dockle results:
 INFO	- CIS-DI-0006: Add HEALTHCHECK instruction to the container image
 	* not found HEALTHCHECK statement
 INFO	- CIS-DI-0008: Confirm safety of setuid/setgid files
-	* setuid file: urwxr-xr-x usr/bin/chfn
 	* setuid file: urwxr-xr-x usr/bin/passwd
-	* setuid file: urwxr-xr-x usr/bin/mount
+	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
+	* setuid file: urwxr-xr-x usr/bin/chfn
 	* setuid file: urwxr-xr-x usr/bin/umount
-	* setuid file: urwxr-xr-x usr/bin/newgrp
-	* setuid file: urwxr-xr-x usr/bin/chsh
-	* setgid file: grwxr-xr-x usr/bin/wall
 	* setuid file: urwxr-xr-x usr/bin/su
 	* setuid file: urwxr-xr-x usr/bin/gpasswd
 	* setgid file: grwxr-xr-x usr/bin/chage
+	* setuid file: urwxr-xr-x usr/bin/mount
 	* setgid file: grwxr-xr-x usr/bin/expiry
-	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
+	* setuid file: urwxr-xr-x usr/bin/newgrp
+	* setgid file: grwxr-xr-x usr/bin/wall
+	* setuid file: urwxr-xr-x usr/bin/chsh
 INFO	- DKL-LI-0003: Only put necessary files
-	* unnecessary file : home/node/app/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
 	* unnecessary file : home/node/app/node_modules/@storybook/codemod/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
+	* unnecessary file : home/node/app/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
 
 
 ========================================================================================================================
@@ -386,18 +386,18 @@ Dockle results:
 INFO	- CIS-DI-0006: Add HEALTHCHECK instruction to the container image
 	* not found HEALTHCHECK statement
 INFO	- CIS-DI-0008: Confirm safety of setuid/setgid files
-	* setgid file: grwxr-xr-x usr/bin/chage
-	* setuid file: urwxr-xr-x usr/bin/newgrp
-	* setuid file: urwxr-xr-x usr/bin/umount
-	* setuid file: urwxr-xr-x usr/bin/chsh
-	* setuid file: urwxr-xr-x usr/bin/gpasswd
+	* setuid file: urwxr-xr-x usr/bin/chfn
 	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
-	* setuid file: urwxr-xr-x usr/bin/mount
-	* setuid file: urwxr-xr-x usr/bin/su
+	* setuid file: urwxr-xr-x usr/bin/gpasswd
 	* setgid file: grwxr-xr-x usr/bin/wall
+	* setuid file: urwxr-xr-x usr/bin/su
+	* setuid file: urwxr-xr-x usr/bin/umount
 	* setuid file: urwxr-xr-x usr/bin/passwd
 	* setgid file: grwxr-xr-x usr/bin/expiry
-	* setuid file: urwxr-xr-x usr/bin/chfn
+	* setuid file: urwxr-xr-x usr/bin/mount
+	* setgid file: grwxr-xr-x usr/bin/chage
+	* setuid file: urwxr-xr-x usr/bin/chsh
+	* setuid file: urwxr-xr-x usr/bin/newgrp
 
 
 ========================================================================================================================
@@ -478,17 +478,117 @@ Dockle results:
 INFO	- CIS-DI-0006: Add HEALTHCHECK instruction to the container image
 	* not found HEALTHCHECK statement
 INFO	- CIS-DI-0008: Confirm safety of setuid/setgid files
+	* setuid file: urwxr-xr-x usr/bin/su
 	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
-	* setuid file: urwxr-xr-x usr/bin/umount
-	* setuid file: urwxr-xr-x usr/bin/mount
 	* setgid file: grwxr-xr-x usr/bin/expiry
+	* setuid file: urwxr-xr-x usr/bin/gpasswd
+	* setuid file: urwxr-xr-x usr/bin/umount
+	* setuid file: urwxr-xr-x usr/bin/chsh
+	* setgid file: grwxr-xr-x usr/bin/chage
+	* setgid file: grwxr-xr-x usr/bin/wall
+	* setuid file: urwxr-xr-x usr/bin/newgrp
 	* setuid file: urwxr-xr-x usr/bin/passwd
 	* setuid file: urwxr-xr-x usr/bin/chfn
+	* setuid file: urwxr-xr-x usr/bin/mount
+
+
+========================================================================================================================
+console
+========================================================================================================================
+Docker image size:
+1.17GB
+
+Dive results:
+  Using default CI config
+Image Source: docker://dockerfile_testing:console
+Fetching image... (this can take a while for large images)
+Analyzing image...
+  efficiency: 99.1142 %
+  wastedBytes: 16590268 bytes (17 MB)
+  userWastedPercent: 1.5120 %
+Inefficient Files:
+Count  Wasted Space  File Path
+    2        4.4 MB  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.BLOB
+    2        4.4 MB  /tmp/v8-compile-cache-1000/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.BLOB
+    4        3.1 MB  /var/cache/debconf/templates.dat
+    4        3.1 MB  /var/cache/debconf/templates.dat-old
+    4        429 kB  /var/lib/dpkg/status
+    4        429 kB  /var/lib/dpkg/status-old
+    3        235 kB  /var/log/dpkg.log
+    3        108 kB  /var/log/apt/term.log
+    2         82 kB  /var/lib/dpkg/info/perl-base.list
+    2         74 kB  /root/.gnupg/pubring.kbx
+    2         61 kB  /root/.gnupg/pubring.kbx~
+    4         41 kB  /var/cache/debconf/config.dat-old
+    4         30 kB  /var/cache/debconf/config.dat
+    4         29 kB  /etc/ld.so.cache
+    4         28 kB  /var/lib/apt/extended_states
+    3         24 kB  /var/cache/ldconfig/aux-cache
+    3         23 kB  /var/log/apt/eipp.log.xz
+    3         21 kB  /var/log/apt/history.log
+    3         12 kB  /var/log/alternatives.log
+    2        2.4 kB  /root/.gnupg/trustdb.gpg
+    2        1.7 kB  /home/node/app/web/package.json
+    2        1.7 kB  /etc/passwd
+    2        1.7 kB  /etc/passwd-
+    2         974 B  /etc/shadow
+    2         881 B  /etc/group
+    2         868 B  /etc/group-
+    2         737 B  /etc/gshadow
+    2         566 B  /home/node/app/api/package.json
+    2         176 B  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.MAP
+    2         176 B  /tmp/v8-compile-cache-1000/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.MAP
+    2          18 B  /etc/subgid
+    2          18 B  /etc/subuid
+    4           0 B  /var/lib/dpkg/triggers/Unincorp
+    4           0 B  /var/lib/dpkg/updates
+    2           0 B  /etc/alternatives
+    3           0 B  /etc/systemd/user
+    4           0 B  /var/lib/dpkg/lock-frontend
+    4           0 B  /var/lib/dpkg/lock
+    2           0 B  /root/.gnupg/private-keys-v1.d
+    4           0 B  /etc
+    2           0 B  /usr/bin
+    4           0 B  /var/cache/debconf/passwords.dat
+    2           0 B  /etc/.pwd.lock
+    2           0 B  /usr/lib/x86_64-linux-gnu
+    3           0 B  /tmp
+    2           0 B  /usr/sbin
+    2           0 B  /usr/share/doc
+    3           0 B  /var/cache/apt/archives/lock
+    3           0 B  /var/cache/apt/archives/partial
+    3           0 B  /var/lib/apt/lists/auxfiles
+    2           0 B  /var/lib/dpkg/alternatives
+    2           0 B  /var/lib/dpkg/info
+    2           0 B  /home/node/app
+    2           0 B  /var/lib/systemd
+    2           0 B  /usr/lib/systemd
+    4           0 B  /var/lib/dpkg/triggers/Lock
+Results:
+  PASS: highestUserWastedPercent
+  SKIP: highestWastedBytes: rule disabled
+  PASS: lowestEfficiency
+Result:PASS [Total:3] [Passed:2] [Failed:0] [Warn:0] [Skipped:1]
+
+
+Dockle results:
+INFO	- CIS-DI-0006: Add HEALTHCHECK instruction to the container image
+	* not found HEALTHCHECK statement
+INFO	- CIS-DI-0008: Confirm safety of setuid/setgid files
+	* setuid file: urwxr-xr-x usr/bin/umount
 	* setgid file: grwxr-xr-x usr/bin/chage
-	* setuid file: urwxr-xr-x usr/bin/newgrp
+	* setuid file: urwxr-xr-x usr/bin/chfn
+	* setuid file: urwxr-xr-x usr/bin/passwd
+	* setgid file: grwxr-xr-x usr/bin/expiry
 	* setuid file: urwxr-xr-x usr/bin/chsh
-	* setuid file: urwxr-xr-x usr/bin/gpasswd
-	* setuid file: urwxr-xr-x usr/bin/su
 	* setgid file: grwxr-xr-x usr/bin/wall
+	* setuid file: urwxr-xr-x usr/bin/mount
+	* setuid file: urwxr-xr-x usr/bin/su
+	* setuid file: urwxr-xr-x usr/bin/gpasswd
+	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
+	* setuid file: urwxr-xr-x usr/bin/newgrp
+INFO	- DKL-LI-0003: Only put necessary files
+	* unnecessary file : home/node/app/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
+	* unnecessary file : home/node/app/node_modules/@storybook/codemod/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
 
 
