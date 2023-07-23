@@ -13,9 +13,10 @@
     # Add any ENV vars that should be available to the web side to this array
     # See https://redwoodjs.com/docs/environment-variables#web
   ]
+  host = "0.0.0.0"
 [api]
   port = "${API_DEV_PORT:8911}"
 [browser]
-  open = true
+  open = false
 [notifications]
   versionUpdates = ["latest"]
