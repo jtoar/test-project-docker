@@ -30,5 +30,5 @@ const author = {
 export const Primary: Story = {
   render: () => {
     return <Author author={author} />
-  }
+  },
 }
