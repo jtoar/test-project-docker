@@ -24,7 +24,7 @@ echo "Input dockerfile: $input_dockerfile"
 output_file="dockerfile_testing.log"
 
 # Truncate the file by redirecting an empty string to it
-> "$output_file"
+true > "$output_file"
 
 # Determine if verbose
 if [ -z "$1" ]; then

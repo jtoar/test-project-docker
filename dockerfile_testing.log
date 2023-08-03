@@ -2,19 +2,20 @@
 base
 ========================================================================================================================
 Docker image size:
-1.19GB
+1.17GB
 
 Dive results:
   Using default CI config
 Image Source: docker://dockerfile_testing:base
 Fetching image... (this can take a while for large images)
 Analyzing image...
-  efficiency: 99.1259 %
-  wastedBytes: 14387709 bytes (14 MB)
-  userWastedPercent: 1.2929 %
+  efficiency: 99.1142 %
+  wastedBytes: 16587978 bytes (17 MB)
+  userWastedPercent: 1.5120 %
 Inefficient Files:
 Count  Wasted Space  File Path
-    3        6.6 MB  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.BLOB
+    2        4.4 MB  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.BLOB
+    2        4.4 MB  /tmp/v8-compile-cache-1000/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.BLOB
     4        3.1 MB  /var/cache/debconf/templates.dat
     4        3.1 MB  /var/cache/debconf/templates.dat-old
     4        429 kB  /var/lib/dpkg/status
@@ -39,32 +40,34 @@ Count  Wasted Space  File Path
     2         881 B  /etc/group
     2         868 B  /etc/group-
     2         737 B  /etc/gshadow
-    3         264 B  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.MAP
+    2         176 B  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.MAP
+    2         176 B  /tmp/v8-compile-cache-1000/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.MAP
     2          18 B  /etc/subgid
     2          18 B  /etc/subuid
-    4           0 B  /var/lib/dpkg/triggers/Lock
-    2           0 B  /usr/lib/systemd
-    2           0 B  /usr/lib/x86_64-linux-gnu
+    4           0 B  /var/lib/dpkg/triggers/Unincorp
     2           0 B  /usr/bin
-    4           0 B  /var/lib/dpkg/updates
     2           0 B  /usr/sbin
     2           0 B  /usr/share/doc
+    4           0 B  /var/lib/dpkg/lock-frontend
+    4           0 B  /var/lib/dpkg/lock
     3           0 B  /var/cache/apt/archives/lock
+    3           0 B  /var/cache/apt/archives/partial
+    3           0 B  /var/lib/apt/lists/auxfiles
     4           0 B  /var/cache/debconf/passwords.dat
     2           0 B  /etc/.pwd.lock
-    3           0 B  /var/lib/apt/lists/auxfiles
+    2           0 B  /var/lib/dpkg/info
     3           0 B  /tmp
     3           0 B  /etc/systemd/user
-    2           0 B  /var/lib/dpkg/alternatives
-    4           0 B  /var/lib/dpkg/triggers/Unincorp
-    4           0 B  /var/lib/dpkg/lock
-    2           0 B  /etc/alternatives
-    2           0 B  /var/lib/dpkg/info
     2           0 B  /var/lib/systemd
+    4           0 B  /var/lib/dpkg/updates
+    2           0 B  /etc/alternatives
+    4           0 B  /etc
+    2           0 B  /home/node/app
+    2           0 B  /usr/lib/x86_64-linux-gnu
+    2           0 B  /usr/lib/systemd
     2           0 B  /root/.gnupg/private-keys-v1.d
-    2           0 B  /etc
-    4           0 B  /var/lib/dpkg/lock-frontend
-    3           0 B  /var/cache/apt/archives/partial
+    4           0 B  /var/lib/dpkg/triggers/Lock
+    2           0 B  /var/lib/dpkg/alternatives
 Results:
   PASS: highestUserWastedPercent
   SKIP: highestWastedBytes: rule disabled
@@ -73,55 +76,50 @@ Result:PASS [Total:3] [Passed:2] [Failed:0] [Warn:0] [Skipped:1]
 
 
 Dockle results:
-FATAL	- DKL-DI-0005: Clear apt-get caches
-	* Use 'rm -rf /var/lib/apt/lists' after 'apt-get install|update' : RUN /bin/sh -c apt-get update || : && apt-get install -y     python3     build-essential # buildkit
-WARN	- CIS-DI-0001: Create a user for the container
-	* Last user should not be root
-INFO	- CIS-DI-0005: Enable Content trust for Docker
-	* export DOCKER_CONTENT_TRUST=1 before docker pull/build
 INFO	- CIS-DI-0006: Add HEALTHCHECK instruction to the container image
 	* not found HEALTHCHECK statement
 INFO	- CIS-DI-0008: Confirm safety of setuid/setgid files
-	* setuid file: urwxr-xr-x usr/bin/newgrp
-	* setgid file: grwxr-xr-x usr/bin/wall
 	* setuid file: urwxr-xr-x usr/bin/passwd
 	* setuid file: urwxr-xr-x usr/bin/umount
-	* setuid file: urwxr-xr-x usr/bin/chsh
-	* setgid file: grwxr-xr-x usr/bin/chage
-	* setuid file: urwxr-xr-x usr/bin/gpasswd
-	* setgid file: grwxr-xr-x usr/bin/expiry
+	* setuid file: urwxr-xr-x usr/bin/newgrp
 	* setuid file: urwxr-xr-x usr/bin/mount
-	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
 	* setuid file: urwxr-xr-x usr/bin/su
+	* setuid file: urwxr-xr-x usr/bin/chsh
+	* setgid file: grwxr-xr-x usr/bin/expiry
+	* setuid file: urwxr-xr-x usr/bin/gpasswd
 	* setuid file: urwxr-xr-x usr/bin/chfn
+	* setgid file: grwxr-xr-x usr/bin/chage
+	* setgid file: grwxr-xr-x usr/bin/wall
+	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
 INFO	- DKL-LI-0003: Only put necessary files
-	* unnecessary file : app/node_modules/@storybook/codemod/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
-	* unnecessary file : app/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
+	* unnecessary file : home/node/app/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
+	* unnecessary file : home/node/app/node_modules/@storybook/codemod/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
 
 
 ========================================================================================================================
 api_build
 ========================================================================================================================
 Docker image size:
-1.23GB
+1.22GB
 
 Dive results:
   Using default CI config
 Image Source: docker://dockerfile_testing:api_build
 Fetching image... (this can take a while for large images)
 Analyzing image...
-  efficiency: 98.9633 %
-  wastedBytes: 16806767 bytes (17 MB)
-  userWastedPercent: 1.4497 %
+  efficiency: 98.9500 %
+  wastedBytes: 19007054 bytes (19 MB)
+  userWastedPercent: 1.6619 %
 Inefficient Files:
 Count  Wasted Space  File Path
-    4        8.8 MB  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.BLOB
+    3        6.6 MB  /tmp/v8-compile-cache-1000/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.BLOB
+    2        4.4 MB  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.BLOB
     4        3.1 MB  /var/cache/debconf/templates.dat
     4        3.1 MB  /var/cache/debconf/templates.dat-old
     4        429 kB  /var/lib/dpkg/status
     4        429 kB  /var/lib/dpkg/status-old
     3        235 kB  /var/log/dpkg.log
-    2        201 kB  /app/node_modules/.prisma/client/index.d.ts
+    2        201 kB  /home/node/app/node_modules/.prisma/client/index.d.ts
     3        108 kB  /var/log/apt/term.log
     2         82 kB  /var/lib/dpkg/info/perl-base.list
     2         74 kB  /root/.gnupg/pubring.kbx
@@ -133,9 +131,9 @@ Count  Wasted Space  File Path
     3         24 kB  /var/cache/ldconfig/aux-cache
     3         23 kB  /var/log/apt/eipp.log.xz
     3         21 kB  /var/log/apt/history.log
-    2         12 kB  /app/node_modules/.prisma/client/index.js
+    2         12 kB  /home/node/app/node_modules/.prisma/client/index.js
     3         12 kB  /var/log/alternatives.log
-    2        5.4 kB  /app/node_modules/.prisma/client/index-browser.js
+    2        5.4 kB  /home/node/app/node_modules/.prisma/client/index-browser.js
     2        2.4 kB  /root/.gnupg/trustdb.gpg
     2        1.7 kB  /etc/passwd
     2        1.7 kB  /etc/passwd-
@@ -143,33 +141,35 @@ Count  Wasted Space  File Path
     2         881 B  /etc/group
     2         868 B  /etc/group-
     2         737 B  /etc/gshadow
-    2         566 B  /app/api/package.json
-    4         352 B  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.MAP
+    2         566 B  /home/node/app/api/package.json
+    3         264 B  /tmp/v8-compile-cache-1000/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.MAP
+    2         176 B  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.MAP
     2          18 B  /etc/subgid
     2          18 B  /etc/subuid
+    2           0 B  /etc/alternatives
     2           0 B  /root/.gnupg/private-keys-v1.d
-    3           0 B  /var/cache/apt/archives/partial
-    3           0 B  /var/lib/apt/lists/auxfiles
-    4           0 B  /var/lib/dpkg/lock-frontend
-    4           0 B  /var/lib/dpkg/lock
-    2           0 B  /etc/.pwd.lock
+    2           0 B  /home/node/app
+    5           0 B  /etc
     2           0 B  /var/lib/dpkg/info
-    2           0 B  /var/lib/systemd
-    4           0 B  /var/cache/debconf/passwords.dat
-    4           0 B  /var/lib/dpkg/triggers/Unincorp
-    3           0 B  /etc
-    3           0 B  /tmp
-    3           0 B  /etc/systemd/user
+    4           0 B  /var/lib/dpkg/lock
     4           0 B  /var/lib/dpkg/updates
-    2           0 B  /usr/share/doc
-    4           0 B  /var/lib/dpkg/triggers/Lock
-    3           0 B  /var/cache/apt/archives/lock
     2           0 B  /usr/bin
     2           0 B  /usr/lib/systemd
+    4           0 B  /var/cache/debconf/passwords.dat
+    2           0 B  /etc/.pwd.lock
+    4           0 B  /var/lib/dpkg/triggers/Unincorp
+    3           0 B  /tmp
+    3           0 B  /etc/systemd/user
     2           0 B  /usr/lib/x86_64-linux-gnu
     2           0 B  /usr/sbin
-    2           0 B  /etc/alternatives
+    2           0 B  /usr/share/doc
+    3           0 B  /var/cache/apt/archives/lock
+    3           0 B  /var/cache/apt/archives/partial
+    2           0 B  /var/lib/systemd
+    3           0 B  /var/lib/apt/lists/auxfiles
     2           0 B  /var/lib/dpkg/alternatives
+    4           0 B  /var/lib/dpkg/lock-frontend
+    4           0 B  /var/lib/dpkg/triggers/Lock
 Results:
   PASS: highestUserWastedPercent
   SKIP: highestWastedBytes: rule disabled
@@ -178,49 +178,49 @@ Result:PASS [Total:3] [Passed:2] [Failed:0] [Warn:0] [Skipped:1]
 
 
 Dockle results:
-FATAL	- DKL-DI-0005: Clear apt-get caches
-	* Use 'rm -rf /var/lib/apt/lists' after 'apt-get install|update' : RUN /bin/sh -c apt-get update || : && apt-get install -y     python3     build-essential # buildkit
-WARN	- CIS-DI-0001: Create a user for the container
-	* Last user should not be root
-INFO	- CIS-DI-0005: Enable Content trust for Docker
-	* export DOCKER_CONTENT_TRUST=1 before docker pull/build
 INFO	- CIS-DI-0006: Add HEALTHCHECK instruction to the container image
 	* not found HEALTHCHECK statement
 INFO	- CIS-DI-0008: Confirm safety of setuid/setgid files
-	* setgid file: grwxr-xr-x usr/bin/chage
-	* setuid file: urwxr-xr-x usr/bin/chsh
-	* setuid file: urwxr-xr-x usr/bin/chfn
-	* setuid file: urwxr-xr-x usr/bin/passwd
-	* setuid file: urwxr-xr-x usr/bin/gpasswd
-	* setuid file: urwxr-xr-x usr/bin/newgrp
-	* setuid file: urwxr-xr-x usr/bin/umount
-	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
-	* setuid file: urwxr-xr-x usr/bin/mount
-	* setuid file: urwxr-xr-x usr/bin/su
 	* setgid file: grwxr-xr-x usr/bin/expiry
+	* setuid file: urwxr-xr-x usr/bin/umount
 	* setgid file: grwxr-xr-x usr/bin/wall
+	* setgid file: grwxr-xr-x usr/bin/chage
+	* setuid file: urwxr-xr-x usr/bin/su
+	* setuid file: urwxr-xr-x usr/bin/chsh
+	* setuid file: urwxr-xr-x usr/bin/gpasswd
+	* setuid file: urwxr-xr-x usr/bin/passwd
+	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
+	* setuid file: urwxr-xr-x usr/bin/newgrp
+	* setuid file: urwxr-xr-x usr/bin/chfn
+	* setuid file: urwxr-xr-x usr/bin/mount
 INFO	- DKL-LI-0003: Only put necessary files
-	* unnecessary file : app/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
-	* unnecessary file : app/node_modules/@storybook/codemod/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
+	* unnecessary file : home/node/app/node_modules/@storybook/codemod/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
+	* unnecessary file : home/node/app/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
 
+
+========================================================================================================================
+web_build_with_prerender
+========================================================================================================================
+Build failed with status 1
 
 ========================================================================================================================
 web_build
 ========================================================================================================================
 Docker image size:
-1.19GB
+1.17GB
 
 Dive results:
   Using default CI config
 Image Source: docker://dockerfile_testing:web_build
 Fetching image... (this can take a while for large images)
 Analyzing image...
-  efficiency: 98.9433 %
-  wastedBytes: 16589809 bytes (17 MB)
-  userWastedPercent: 1.4867 %
+  efficiency: 98.9292 %
+  wastedBytes: 18790110 bytes (19 MB)
+  userWastedPercent: 1.7079 %
 Inefficient Files:
 Count  Wasted Space  File Path
-    4        8.8 MB  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.BLOB
+    3        6.6 MB  /tmp/v8-compile-cache-1000/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.BLOB
+    2        4.4 MB  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.BLOB
     4        3.1 MB  /var/cache/debconf/templates.dat
     4        3.1 MB  /var/cache/debconf/templates.dat-old
     4        429 kB  /var/lib/dpkg/status
@@ -239,37 +239,39 @@ Count  Wasted Space  File Path
     3         21 kB  /var/log/apt/history.log
     3         12 kB  /var/log/alternatives.log
     2        2.4 kB  /root/.gnupg/trustdb.gpg
-    2        1.7 kB  /app/web/package.json
+    2        1.7 kB  /home/node/app/web/package.json
     2        1.7 kB  /etc/passwd
     2        1.7 kB  /etc/passwd-
     2         974 B  /etc/shadow
     2         881 B  /etc/group
     2         868 B  /etc/group-
     2         737 B  /etc/gshadow
-    4         352 B  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.MAP
+    3         264 B  /tmp/v8-compile-cache-1000/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.MAP
+    2         176 B  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.MAP
     2          18 B  /etc/subgid
     2          18 B  /etc/subuid
+    4           0 B  /var/lib/dpkg/triggers/Unincorp
+    2           0 B  /root/.gnupg/private-keys-v1.d
+    4           0 B  /var/lib/dpkg/updates
+    2           0 B  /etc/alternatives
+    2           0 B  /etc/.pwd.lock
+    4           0 B  /var/lib/dpkg/lock
     4           0 B  /var/lib/dpkg/triggers/Lock
+    2           0 B  /var/lib/systemd
+    5           0 B  /etc
+    4           0 B  /var/cache/debconf/passwords.dat
+    2           0 B  /home/node/app
+    2           0 B  /usr/bin
+    3           0 B  /tmp
+    3           0 B  /etc/systemd/user
+    2           0 B  /usr/lib/systemd
     2           0 B  /usr/lib/x86_64-linux-gnu
     2           0 B  /usr/sbin
-    2           0 B  /usr/bin
-    4           0 B  /var/lib/dpkg/lock
     2           0 B  /usr/share/doc
     3           0 B  /var/cache/apt/archives/lock
     3           0 B  /var/cache/apt/archives/partial
-    4           0 B  /var/cache/debconf/passwords.dat
-    3           0 B  /var/lib/apt/lists/auxfiles
-    2           0 B  /etc/.pwd.lock
-    3           0 B  /tmp
-    3           0 B  /etc/systemd/user
     2           0 B  /var/lib/dpkg/info
-    4           0 B  /var/lib/dpkg/triggers/Unincorp
-    2           0 B  /usr/lib/systemd
-    2           0 B  /var/lib/systemd
-    4           0 B  /var/lib/dpkg/updates
-    2           0 B  /etc/alternatives
-    2           0 B  /root/.gnupg/private-keys-v1.d
-    3           0 B  /etc
+    3           0 B  /var/lib/apt/lists/auxfiles
     4           0 B  /var/lib/dpkg/lock-frontend
     2           0 B  /var/lib/dpkg/alternatives
 Results:
@@ -280,59 +282,48 @@ Result:PASS [Total:3] [Passed:2] [Failed:0] [Warn:0] [Skipped:1]
 
 
 Dockle results:
-FATAL	- DKL-DI-0005: Clear apt-get caches
-	* Use 'rm -rf /var/lib/apt/lists' after 'apt-get install|update' : RUN /bin/sh -c apt-get update || : && apt-get install -y     python3     build-essential # buildkit
-WARN	- CIS-DI-0001: Create a user for the container
-	* Last user should not be root
-INFO	- CIS-DI-0005: Enable Content trust for Docker
-	* export DOCKER_CONTENT_TRUST=1 before docker pull/build
 INFO	- CIS-DI-0006: Add HEALTHCHECK instruction to the container image
 	* not found HEALTHCHECK statement
 INFO	- CIS-DI-0008: Confirm safety of setuid/setgid files
-	* setgid file: grwxr-xr-x usr/bin/expiry
-	* setuid file: urwxr-xr-x usr/bin/mount
-	* setuid file: urwxr-xr-x usr/bin/newgrp
-	* setuid file: urwxr-xr-x usr/bin/su
 	* setuid file: urwxr-xr-x usr/bin/passwd
 	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
+	* setuid file: urwxr-xr-x usr/bin/chfn
 	* setuid file: urwxr-xr-x usr/bin/umount
+	* setuid file: urwxr-xr-x usr/bin/su
 	* setuid file: urwxr-xr-x usr/bin/gpasswd
 	* setgid file: grwxr-xr-x usr/bin/chage
-	* setuid file: urwxr-xr-x usr/bin/chsh
+	* setuid file: urwxr-xr-x usr/bin/mount
+	* setgid file: grwxr-xr-x usr/bin/expiry
+	* setuid file: urwxr-xr-x usr/bin/newgrp
 	* setgid file: grwxr-xr-x usr/bin/wall
-	* setuid file: urwxr-xr-x usr/bin/chfn
+	* setuid file: urwxr-xr-x usr/bin/chsh
 INFO	- DKL-LI-0003: Only put necessary files
-	* unnecessary file : app/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
-	* unnecessary file : app/node_modules/@storybook/codemod/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
+	* unnecessary file : home/node/app/node_modules/@storybook/codemod/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
+	* unnecessary file : home/node/app/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
 
 
 ========================================================================================================================
-web_prerender_build
-========================================================================================================================
-Build failed with status 1
-
-========================================================================================================================
-serve_api
+api_serve
 ========================================================================================================================
 Docker image size:
-336MB
+321MB
 
 Dive results:
   Using default CI config
-Image Source: docker://dockerfile_testing:serve_api
+Image Source: docker://dockerfile_testing:api_serve
 Fetching image... (this can take a while for large images)
 Analyzing image...
-  efficiency: 97.8960 %
-  wastedBytes: 11054004 bytes (11 MB)
-  userWastedPercent: 4.2240 %
+  efficiency: 97.7932 %
+  wastedBytes: 11054046 bytes (11 MB)
+  userWastedPercent: 4.4930 %
 Inefficient Files:
 Count  Wasted Space  File Path
-    2        4.4 MB  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.BLOB
+    2        4.4 MB  /tmp/v8-compile-cache-1000/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.BLOB
     4        3.0 MB  /var/cache/debconf/templates.dat
     3        2.3 MB  /var/cache/debconf/templates.dat-old
     4        308 kB  /var/lib/dpkg/status-old
     4        308 kB  /var/lib/dpkg/status
-    2        201 kB  /app/node_modules/.prisma/client/index.d.ts
+    2        201 kB  /home/node/app/node_modules/.prisma/client/index.d.ts
     3        174 kB  /var/log/dpkg.log
     3         75 kB  /var/log/apt/term.log
     2         74 kB  /root/.gnupg/pubring.kbx
@@ -344,9 +335,9 @@ Count  Wasted Space  File Path
     3         16 kB  /var/log/apt/eipp.log.xz
     3         15 kB  /var/log/apt/history.log
     3         14 kB  /var/cache/ldconfig/aux-cache
-    2         12 kB  /app/node_modules/.prisma/client/index.js
-    2        7.9 kB  /app/node_modules/.prisma/client/edge.d.ts
-    2        5.4 kB  /app/node_modules/.prisma/client/index-browser.js
+    2         12 kB  /home/node/app/node_modules/.prisma/client/index.js
+    2        7.9 kB  /home/node/app/node_modules/.prisma/client/edge.d.ts
+    2        5.4 kB  /home/node/app/node_modules/.prisma/client/index-browser.js
     2        4.7 kB  /var/log/alternatives.log
     2        2.4 kB  /root/.gnupg/trustdb.gpg
     2        1.7 kB  /etc/passwd
@@ -355,33 +346,35 @@ Count  Wasted Space  File Path
     2         881 B  /etc/group
     2         868 B  /etc/group-
     2         737 B  /etc/gshadow
-    2         670 B  /app/node_modules/.prisma/client/edge.js
-    2         654 B  /app/node_modules/.prisma/client/deno/edge.ts
-    2         176 B  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.MAP
+    2         670 B  /home/node/app/node_modules/.prisma/client/edge.js
+    2         654 B  /home/node/app/node_modules/.prisma/client/deno/edge.ts
+    2         176 B  /tmp/v8-compile-cache-1000/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.MAP
     2          18 B  /etc/subgid
     2          18 B  /etc/subuid
-    3           0 B  /var/lib/apt/lists/auxfiles
-    2           0 B  /etc/.pwd.lock
+    2           0 B  /etc/alternatives
+    4           0 B  /var/lib/dpkg/updates
+    2           0 B  /root/.gnupg/private-keys-v1.d
+    2           0 B  /usr/bin
     4           0 B  /var/lib/dpkg/lock-frontend
     4           0 B  /var/lib/dpkg/lock
-    2           0 B  /var/lib/dpkg/info
     2           0 B  /var/lib/systemd
-    2           0 B  /root/.gnupg/private-keys-v1.d
+    2           0 B  /home/node/app
+    2           0 B  /usr/lib/x86_64-linux-gnu
     4           0 B  /var/cache/debconf/passwords.dat
+    2           0 B  /etc/.pwd.lock
     3           0 B  /var/lib/dpkg/triggers/Unincorp
-    4           0 B  /var/lib/dpkg/updates
     3           0 B  /tmp
     3           0 B  /etc/systemd/user
-    3           0 B  /var/cache/apt/archives/lock
-    4           0 B  /var/lib/dpkg/triggers/Lock
-    3           0 B  /var/cache/apt/archives/partial
-    2           0 B  /usr/bin
-    2           0 B  /usr/lib/systemd
-    2           0 B  /usr/lib/x86_64-linux-gnu
+    3           0 B  /etc
     2           0 B  /usr/sbin
     2           0 B  /usr/share/doc
-    2           0 B  /etc/alternatives
+    3           0 B  /var/cache/apt/archives/lock
+    3           0 B  /var/cache/apt/archives/partial
+    3           0 B  /var/lib/apt/lists/auxfiles
     2           0 B  /var/lib/dpkg/alternatives
+    2           0 B  /var/lib/dpkg/info
+    2           0 B  /usr/lib/systemd
+    4           0 B  /var/lib/dpkg/triggers/Lock
 Results:
   PASS: highestUserWastedPercent
   SKIP: highestWastedBytes: rule disabled
@@ -390,46 +383,40 @@ Result:PASS [Total:3] [Passed:2] [Failed:0] [Warn:0] [Skipped:1]
 
 
 Dockle results:
-FATAL	- DKL-DI-0005: Clear apt-get caches
-	* Use 'rm -rf /var/lib/apt/lists' after 'apt-get install|update' : RUN /bin/sh -c apt-get update || : && apt-get install -y     openssl # buildkit
-WARN	- CIS-DI-0001: Create a user for the container
-	* Last user should not be root
-INFO	- CIS-DI-0005: Enable Content trust for Docker
-	* export DOCKER_CONTENT_TRUST=1 before docker pull/build
 INFO	- CIS-DI-0006: Add HEALTHCHECK instruction to the container image
 	* not found HEALTHCHECK statement
 INFO	- CIS-DI-0008: Confirm safety of setuid/setgid files
-	* setgid file: grwxr-xr-x usr/bin/chage
-	* setuid file: urwxr-xr-x usr/bin/mount
-	* setuid file: urwxr-xr-x usr/bin/newgrp
-	* setuid file: urwxr-xr-x usr/bin/umount
-	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
 	* setuid file: urwxr-xr-x usr/bin/chfn
-	* setgid file: grwxr-xr-x usr/bin/wall
-	* setgid file: grwxr-xr-x usr/bin/expiry
-	* setuid file: urwxr-xr-x usr/bin/passwd
-	* setuid file: urwxr-xr-x usr/bin/chsh
+	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
 	* setuid file: urwxr-xr-x usr/bin/gpasswd
+	* setgid file: grwxr-xr-x usr/bin/wall
 	* setuid file: urwxr-xr-x usr/bin/su
+	* setuid file: urwxr-xr-x usr/bin/umount
+	* setuid file: urwxr-xr-x usr/bin/passwd
+	* setgid file: grwxr-xr-x usr/bin/expiry
+	* setuid file: urwxr-xr-x usr/bin/mount
+	* setgid file: grwxr-xr-x usr/bin/chage
+	* setuid file: urwxr-xr-x usr/bin/chsh
+	* setuid file: urwxr-xr-x usr/bin/newgrp
 
 
 ========================================================================================================================
-serve_web
+web_serve
 ========================================================================================================================
 Docker image size:
-289MB
+292MB
 
 Dive results:
   Using default CI config
-Image Source: docker://dockerfile_testing:serve_web
+Image Source: docker://dockerfile_testing:web_serve
 Fetching image... (this can take a while for large images)
 Analyzing image...
-  efficiency: 97.9842 %
-  wastedBytes: 9789270 bytes (9.8 MB)
-  userWastedPercent: 4.5721 %
+  efficiency: 98.0082 %
+  wastedBytes: 9789254 bytes (9.8 MB)
+  userWastedPercent: 4.4989 %
 Inefficient Files:
 Count  Wasted Space  File Path
-    2        4.4 MB  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.BLOB
+    2        4.4 MB  /tmp/v8-compile-cache-1000/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.BLOB
     3        2.3 MB  /var/cache/debconf/templates.dat-old
     3        2.3 MB  /var/cache/debconf/templates.dat
     3        230 kB  /var/lib/dpkg/status-old
@@ -453,30 +440,32 @@ Count  Wasted Space  File Path
     2         881 B  /etc/group
     2         868 B  /etc/group-
     2         737 B  /etc/gshadow
-    2         176 B  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.MAP
+    2         176 B  /tmp/v8-compile-cache-1000/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.MAP
     2          18 B  /etc/subgid
     2          18 B  /etc/subuid
-    2           0 B  /var/lib/apt/lists/auxfiles
-    3           0 B  /var/lib/dpkg/updates
+    3           0 B  /var/lib/dpkg/triggers/Unincorp
+    2           0 B  /usr/bin
+    2           0 B  /var/cache/apt/archives/lock
+    2           0 B  /etc/.pwd.lock
     3           0 B  /var/lib/dpkg/lock-frontend
-    3           0 B  /var/lib/dpkg/lock
+    3           0 B  /var/lib/dpkg/updates
+    2           0 B  /var/lib/apt/lists/auxfiles
     2           0 B  /var/lib/dpkg/alternatives
     2           0 B  /var/lib/dpkg/info
-    2           0 B  /var/lib/systemd
     3           0 B  /var/cache/debconf/passwords.dat
-    2           0 B  /etc/.pwd.lock
-    2           0 B  /var/cache/apt/archives/lock
+    2           0 B  /var/lib/systemd
+    2           0 B  /home/node/app
     2           0 B  /tmp
     3           0 B  /etc/systemd/user
+    3           0 B  /etc
+    3           0 B  /var/lib/dpkg/lock
     2           0 B  /usr/share/doc
-    3           0 B  /var/lib/dpkg/triggers/Lock
-    3           0 B  /var/lib/dpkg/triggers/Unincorp
     2           0 B  /etc/alternatives
-    2           0 B  /usr/bin
-    2           0 B  /usr/lib/systemd
-    2           0 B  /usr/lib/x86_64-linux-gnu
-    2           0 B  /usr/sbin
     2           0 B  /root/.gnupg/private-keys-v1.d
+    2           0 B  /usr/sbin
+    2           0 B  /usr/lib/x86_64-linux-gnu
+    2           0 B  /usr/lib/systemd
+    3           0 B  /var/lib/dpkg/triggers/Lock
     2           0 B  /var/cache/apt/archives/partial
 Results:
   PASS: highestUserWastedPercent
@@ -486,203 +475,95 @@ Result:PASS [Total:3] [Passed:2] [Failed:0] [Warn:0] [Skipped:1]
 
 
 Dockle results:
-WARN	- CIS-DI-0001: Create a user for the container
-	* Last user should not be root
-INFO	- CIS-DI-0005: Enable Content trust for Docker
-	* export DOCKER_CONTENT_TRUST=1 before docker pull/build
 INFO	- CIS-DI-0006: Add HEALTHCHECK instruction to the container image
 	* not found HEALTHCHECK statement
 INFO	- CIS-DI-0008: Confirm safety of setuid/setgid files
-	* setuid file: urwxr-xr-x usr/bin/gpasswd
-	* setgid file: grwxr-xr-x usr/bin/wall
-	* setgid file: grwxr-xr-x usr/bin/chage
-	* setuid file: urwxr-xr-x usr/bin/newgrp
-	* setgid file: grwxr-xr-x usr/bin/expiry
-	* setuid file: urwxr-xr-x usr/bin/mount
 	* setuid file: urwxr-xr-x usr/bin/su
-	* setuid file: urwxr-xr-x usr/bin/passwd
-	* setuid file: urwxr-xr-x usr/bin/chfn
+	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
+	* setgid file: grwxr-xr-x usr/bin/expiry
+	* setuid file: urwxr-xr-x usr/bin/gpasswd
 	* setuid file: urwxr-xr-x usr/bin/umount
 	* setuid file: urwxr-xr-x usr/bin/chsh
-	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
-
-
-========================================================================================================================
-serve
-========================================================================================================================
-Docker image size:
-354MB
-
-Dive results:
-  Using default CI config
-Image Source: docker://dockerfile_testing:serve
-Fetching image... (this can take a while for large images)
-Analyzing image...
-  efficiency: 98.0009 %
-  wastedBytes: 11054036 bytes (11 MB)
-  userWastedPercent: 3.9570 %
-Inefficient Files:
-Count  Wasted Space  File Path
-    2        4.4 MB  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.BLOB
-    4        3.0 MB  /var/cache/debconf/templates.dat
-    3        2.3 MB  /var/cache/debconf/templates.dat-old
-    4        308 kB  /var/lib/dpkg/status-old
-    4        308 kB  /var/lib/dpkg/status
-    2        201 kB  /app/node_modules/.prisma/client/index.d.ts
-    3        174 kB  /var/log/dpkg.log
-    3         75 kB  /var/log/apt/term.log
-    2         74 kB  /root/.gnupg/pubring.kbx
-    2         61 kB  /root/.gnupg/pubring.kbx~
-    3         36 kB  /var/cache/debconf/config.dat-old
-    4         20 kB  /var/lib/apt/extended_states
-    4         18 kB  /etc/ld.so.cache
-    4         18 kB  /var/cache/debconf/config.dat
-    3         16 kB  /var/log/apt/eipp.log.xz
-    3         15 kB  /var/log/apt/history.log
-    3         14 kB  /var/cache/ldconfig/aux-cache
-    2         12 kB  /app/node_modules/.prisma/client/index.js
-    2        7.9 kB  /app/node_modules/.prisma/client/edge.d.ts
-    2        5.4 kB  /app/node_modules/.prisma/client/index-browser.js
-    2        4.7 kB  /var/log/alternatives.log
-    2        2.4 kB  /root/.gnupg/trustdb.gpg
-    2        1.7 kB  /etc/passwd
-    2        1.7 kB  /etc/passwd-
-    2         974 B  /etc/shadow
-    2         881 B  /etc/group
-    2         868 B  /etc/group-
-    2         737 B  /etc/gshadow
-    2         670 B  /app/node_modules/.prisma/client/edge.js
-    2         654 B  /app/node_modules/.prisma/client/deno/edge.ts
-    2         176 B  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.MAP
-    2          18 B  /etc/subgid
-    2          18 B  /etc/subuid
-    3           0 B  /var/lib/apt/lists/auxfiles
-    2           0 B  /etc/.pwd.lock
-    4           0 B  /var/lib/dpkg/lock-frontend
-    4           0 B  /var/lib/dpkg/lock
-    2           0 B  /var/lib/dpkg/info
-    2           0 B  /var/lib/systemd
-    2           0 B  /root/.gnupg/private-keys-v1.d
-    4           0 B  /var/cache/debconf/passwords.dat
-    3           0 B  /var/lib/dpkg/triggers/Unincorp
-    4           0 B  /var/lib/dpkg/updates
-    3           0 B  /tmp
-    3           0 B  /etc/systemd/user
-    3           0 B  /var/cache/apt/archives/lock
-    4           0 B  /var/lib/dpkg/triggers/Lock
-    3           0 B  /var/cache/apt/archives/partial
-    2           0 B  /usr/bin
-    2           0 B  /usr/lib/systemd
-    2           0 B  /usr/lib/x86_64-linux-gnu
-    2           0 B  /usr/sbin
-    2           0 B  /usr/share/doc
-    2           0 B  /etc/alternatives
-    2           0 B  /var/lib/dpkg/alternatives
-Results:
-  PASS: highestUserWastedPercent
-  SKIP: highestWastedBytes: rule disabled
-  PASS: lowestEfficiency
-Result:PASS [Total:3] [Passed:2] [Failed:0] [Warn:0] [Skipped:1]
-
-
-Dockle results:
-FATAL	- DKL-DI-0005: Clear apt-get caches
-	* Use 'rm -rf /var/lib/apt/lists' after 'apt-get install|update' : RUN /bin/sh -c apt-get update || : && apt-get install -y     openssl # buildkit
-WARN	- CIS-DI-0001: Create a user for the container
-	* Last user should not be root
-INFO	- CIS-DI-0005: Enable Content trust for Docker
-	* export DOCKER_CONTENT_TRUST=1 before docker pull/build
-INFO	- CIS-DI-0006: Add HEALTHCHECK instruction to the container image
-	* not found HEALTHCHECK statement
-INFO	- CIS-DI-0008: Confirm safety of setuid/setgid files
 	* setgid file: grwxr-xr-x usr/bin/chage
-	* setuid file: urwxr-xr-x usr/bin/chsh
-	* setuid file: urwxr-xr-x usr/bin/su
-	* setuid file: urwxr-xr-x usr/bin/chfn
 	* setgid file: grwxr-xr-x usr/bin/wall
-	* setgid file: grwxr-xr-x usr/bin/expiry
-	* setuid file: urwxr-xr-x usr/bin/mount
-	* setuid file: urwxr-xr-x usr/bin/umount
-	* setuid file: urwxr-xr-x usr/bin/gpasswd
 	* setuid file: urwxr-xr-x usr/bin/newgrp
 	* setuid file: urwxr-xr-x usr/bin/passwd
-	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
+	* setuid file: urwxr-xr-x usr/bin/chfn
+	* setuid file: urwxr-xr-x usr/bin/mount
 
 
 ========================================================================================================================
 console
 ========================================================================================================================
 Docker image size:
-1.19GB
+1.17GB
 
 Dive results:
   Using default CI config
 Image Source: docker://dockerfile_testing:console
 Fetching image... (this can take a while for large images)
 Analyzing image...
-  efficiency: 98.9803 %
-  wastedBytes: 16405173 bytes (16 MB)
-  userWastedPercent: 1.4690 %
+  efficiency: 99.1142 %
+  wastedBytes: 16590268 bytes (17 MB)
+  userWastedPercent: 1.5120 %
 Inefficient Files:
 Count  Wasted Space  File Path
-    3        6.6 MB  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.BLOB
-    5        3.9 MB  /var/cache/debconf/templates.dat
+    2        4.4 MB  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.BLOB
+    2        4.4 MB  /tmp/v8-compile-cache-1000/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.BLOB
+    4        3.1 MB  /var/cache/debconf/templates.dat
     4        3.1 MB  /var/cache/debconf/templates.dat-old
-    5        633 kB  /var/lib/dpkg/status
-    5        633 kB  /var/lib/dpkg/status-old
-    4        370 kB  /var/log/dpkg.log
-    2        294 kB  /var/lib/apt/lists/deb.debian.org_debian_dists_bookworm_InRelease
-    4        173 kB  /var/log/apt/term.log
-    2        104 kB  /var/lib/apt/lists/deb.debian.org_debian_dists_bookworm-updates_InRelease
-    2         96 kB  /var/lib/apt/lists/deb.debian.org_debian-security_dists_bookworm-security_InRelease
+    4        429 kB  /var/lib/dpkg/status
+    4        429 kB  /var/lib/dpkg/status-old
+    3        235 kB  /var/log/dpkg.log
+    3        108 kB  /var/log/apt/term.log
     2         82 kB  /var/lib/dpkg/info/perl-base.list
     2         74 kB  /root/.gnupg/pubring.kbx
     2         61 kB  /root/.gnupg/pubring.kbx~
-    5         46 kB  /var/cache/debconf/config.dat
-    5         44 kB  /etc/ld.so.cache
-    5         41 kB  /var/lib/apt/extended_states
     4         41 kB  /var/cache/debconf/config.dat-old
-    4         39 kB  /var/cache/ldconfig/aux-cache
-    4         34 kB  /var/log/apt/eipp.log.xz
-    4         33 kB  /var/log/apt/history.log
+    4         30 kB  /var/cache/debconf/config.dat
+    4         29 kB  /etc/ld.so.cache
+    4         28 kB  /var/lib/apt/extended_states
+    3         24 kB  /var/cache/ldconfig/aux-cache
+    3         23 kB  /var/log/apt/eipp.log.xz
+    3         21 kB  /var/log/apt/history.log
     3         12 kB  /var/log/alternatives.log
     2        2.4 kB  /root/.gnupg/trustdb.gpg
-    2        1.7 kB  /app/web/package.json
+    2        1.7 kB  /home/node/app/web/package.json
     2        1.7 kB  /etc/passwd
     2        1.7 kB  /etc/passwd-
     2         974 B  /etc/shadow
     2         881 B  /etc/group
     2         868 B  /etc/group-
     2         737 B  /etc/gshadow
-    2         566 B  /app/api/package.json
-    3         264 B  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.MAP
+    2         566 B  /home/node/app/api/package.json
+    2         176 B  /tmp/v8-compile-cache-0/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.MAP
+    2         176 B  /tmp/v8-compile-cache-1000/10.2.154.26-node.26/zSoptzSyarn-v1.22.19zSbinzSyarn.js.MAP
     2          18 B  /etc/subgid
     2          18 B  /etc/subuid
-    5           0 B  /var/lib/dpkg/updates
     4           0 B  /var/lib/dpkg/triggers/Unincorp
+    4           0 B  /var/lib/dpkg/updates
     2           0 B  /etc/alternatives
+    3           0 B  /etc/systemd/user
+    4           0 B  /var/lib/dpkg/lock-frontend
+    4           0 B  /var/lib/dpkg/lock
     2           0 B  /root/.gnupg/private-keys-v1.d
-    2           0 B  /var/lib/systemd
-    5           0 B  /var/lib/dpkg/lock-frontend
-    5           0 B  /var/lib/dpkg/lock
-    2           0 B  /etc
-    2           0 B  /var/lib/apt/lists/lock
-    2           0 B  /var/lib/apt/lists/partial
-    5           0 B  /var/cache/debconf/passwords.dat
+    4           0 B  /etc
+    2           0 B  /usr/bin
+    4           0 B  /var/cache/debconf/passwords.dat
     2           0 B  /etc/.pwd.lock
     2           0 B  /usr/lib/x86_64-linux-gnu
-    4           0 B  /tmp
-    3           0 B  /etc/systemd/user
+    3           0 B  /tmp
     2           0 B  /usr/sbin
     2           0 B  /usr/share/doc
-    4           0 B  /var/cache/apt/archives/lock
-    4           0 B  /var/cache/apt/archives/partial
-    5           0 B  /var/lib/dpkg/triggers/Lock
-    4           0 B  /var/lib/apt/lists/auxfiles
+    3           0 B  /var/cache/apt/archives/lock
+    3           0 B  /var/cache/apt/archives/partial
+    3           0 B  /var/lib/apt/lists/auxfiles
     2           0 B  /var/lib/dpkg/alternatives
     2           0 B  /var/lib/dpkg/info
+    2           0 B  /home/node/app
+    2           0 B  /var/lib/systemd
     2           0 B  /usr/lib/systemd
-    2           0 B  /usr/bin
+    4           0 B  /var/lib/dpkg/triggers/Lock
 Results:
   PASS: highestUserWastedPercent
   SKIP: highestWastedBytes: rule disabled
@@ -691,30 +572,23 @@ Result:PASS [Total:3] [Passed:2] [Failed:0] [Warn:0] [Skipped:1]
 
 
 Dockle results:
-FATAL	- DKL-DI-0005: Clear apt-get caches
-	* Use 'rm -rf /var/lib/apt/lists' after 'apt-get install|update' : RUN /bin/sh -c apt-get update || : && apt-get install -y     curl # buildkit
-	* Use 'rm -rf /var/lib/apt/lists' after 'apt-get install|update' : RUN /bin/sh -c apt-get update || : && apt-get install -y     python3     build-essential # buildkit
-WARN	- CIS-DI-0001: Create a user for the container
-	* Last user should not be root
-INFO	- CIS-DI-0005: Enable Content trust for Docker
-	* export DOCKER_CONTENT_TRUST=1 before docker pull/build
 INFO	- CIS-DI-0006: Add HEALTHCHECK instruction to the container image
 	* not found HEALTHCHECK statement
 INFO	- CIS-DI-0008: Confirm safety of setuid/setgid files
-	* setuid file: urwxr-xr-x usr/bin/newgrp
-	* setuid file: urwxr-xr-x usr/bin/su
-	* setgid file: grwxr-xr-x usr/bin/expiry
 	* setuid file: urwxr-xr-x usr/bin/umount
-	* setuid file: urwxr-xr-x usr/bin/passwd
-	* setgid file: grwxr-xr-x usr/bin/wall
-	* setuid file: urwxr-xr-x usr/bin/chfn
-	* setuid file: urwxr-xr-x usr/bin/chsh
-	* setuid file: urwxr-xr-x usr/bin/mount
-	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
 	* setgid file: grwxr-xr-x usr/bin/chage
+	* setuid file: urwxr-xr-x usr/bin/chfn
+	* setuid file: urwxr-xr-x usr/bin/passwd
+	* setgid file: grwxr-xr-x usr/bin/expiry
+	* setuid file: urwxr-xr-x usr/bin/chsh
+	* setgid file: grwxr-xr-x usr/bin/wall
+	* setuid file: urwxr-xr-x usr/bin/mount
+	* setuid file: urwxr-xr-x usr/bin/su
 	* setuid file: urwxr-xr-x usr/bin/gpasswd
+	* setgid file: grwxr-xr-x usr/sbin/unix_chkpwd
+	* setuid file: urwxr-xr-x usr/bin/newgrp
 INFO	- DKL-LI-0003: Only put necessary files
-	* unnecessary file : app/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
-	* unnecessary file : app/node_modules/@storybook/codemod/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
+	* unnecessary file : home/node/app/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
+	* unnecessary file : home/node/app/node_modules/@storybook/codemod/node_modules/jscodeshift/node_modules/recast/.devcontainer/Dockerfile 
 
 

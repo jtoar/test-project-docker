@@ -27,6 +27,8 @@ services:
     environment:
       - DATABASE_URL=postgresql://redwood:redwood@db:5432/redwood
       - TEST_DATABASE_URL=postgresql://redwood:redwood@db:5432/redwood_test
+    depends_on:
+      - db
 
   # Redwood API
   api:
@@ -34,7 +36,7 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-      target: serve_api
+      target: api_serve
     ports:
       - "8911:8911"
     depends_on:
@@ -50,7 +52,7 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-      target: serve_web
+      target: web_serve
     ports:
       - "8910:8910"
     depends_on:
