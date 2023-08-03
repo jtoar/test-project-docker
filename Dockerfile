@@ -127,11 +127,16 @@ CMD "node_modules/.bin/rw-server" "web" "--apiHost" "$API_HOST"
 # ------------------------------------------------
 FROM base as console
 
-# Note if you want to add any development packages you will need to do the following
+# If you want to add any development packages, you'll need to do the following:
+#
+# ```
 # USER root
+#
 # RUN apt-get update || : && apt-get install -y \
 #     curl
+#
 # USER node
+# ```
 
 COPY --chown=node:node api api
 COPY --chown=node:node web web
