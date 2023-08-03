@@ -141,4 +141,3 @@ FROM base as console
 COPY --chown=node:node api api
 COPY --chown=node:node web web
 COPY --chown=node:node scripts scripts
-
