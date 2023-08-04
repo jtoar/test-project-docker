@@ -45,7 +45,7 @@ RUN node_modules/.bin/redwood build api
 # ------------------------------------------------
 FROM api_build as web_build_with_prerender
 
-COPY --chown=noe:node web web
+COPY --chown=node:node web web
 RUN node_modules/.bin/redwood build web
 
 # web build
