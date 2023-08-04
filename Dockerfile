@@ -2,24 +2,18 @@
 # ------------------------------------------------
 FROM node:18-bookworm-slim as base
 
-# To stop yarn install from over-logging.
-ENV CI=1
-
 RUN apt-get update || : && apt-get install -y \
     python3 \
     build-essential \
     openssl \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN yarn cache clean
-
-WORKDIR /home/node/app
-RUN chown -R node:node /home/node/app
 USER node
+WORKDIR /home/node/app
 
+COPY --chown=node:node .yarn/plugins .yarn/plugins
 COPY --chown=node:node .yarn/releases .yarn/releases
 COPY --chown=node:node .yarnrc.yml .yarnrc.yml
-COPY --chown=node:node .yarn/plugins .yarn/plugins
 COPY --chown=node:node package.json package.json
 COPY --chown=node:node api/package.json api/package.json
 COPY --chown=node:node web/package.json web/package.json
@@ -27,7 +21,7 @@ COPY --chown=node:node yarn.lock yarn.lock
 
 RUN --mount=type=cache,target=/home/node/.yarn/berry/cache,uid=1000 \
     --mount=type=cache,target=/home/node/.cache,uid=1000 \
-    yarn install --immutable --inline-builds
+    CI=1 yarn install --immutable
 
 RUN yarn cache clean
 
@@ -59,26 +53,24 @@ RUN node_modules/.bin/redwood build web --no-prerender
 # ------------------------------------------------
 FROM node:18-bookworm-slim as api_serve
 
-ENV CI=1 \
-    NODE_ENV=production
+ENV NODE_ENV=production
 
 RUN apt-get update || : && apt-get install -y \
     openssl \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /home/node/app
-RUN chown -R node:node /home/node/app
 USER node
+WORKDIR /home/node/app
 
+COPY --chown=node:node .yarn/plugins .yarn/plugins
 COPY --chown=node:node .yarn/releases .yarn/releases
 COPY --chown=node:node .yarnrc.yml .yarnrc.yml
-COPY --chown=node:node .yarn/plugins .yarn/plugins
 COPY --chown=node:node api/package.json .
 COPY --chown=node:node yarn.lock yarn.lock
 
 RUN --mount=type=cache,target=/home/node/.yarn/berry/cache,uid=1000 \
     --mount=type=cache,target=/home/node/.cache,uid=1000 \
-    yarn workspaces focus api --production
+    CI=1 yarn workspaces focus api --production
 
 RUN yarn cache clean
 
@@ -95,23 +87,21 @@ CMD [ "node_modules/.bin/rw-server", "api" ]
 # ------------------------------------------------
 FROM node:18-bookworm-slim as web_serve
 
-ENV CI=1 \
-    NODE_ENV=production \
+ENV NODE_ENV=production \
     API_HOST=http://api:8911
 
-WORKDIR /home/node/app
-RUN chown -R node:node /home/node/app
 USER node
+WORKDIR /home/node/app
 
+COPY --chown=node:node .yarn/plugins .yarn/plugins
 COPY --chown=node:node .yarn/releases .yarn/releases
 COPY --chown=node:node .yarnrc.yml .yarnrc.yml
-COPY --chown=node:node .yarn/plugins .yarn/plugins
 COPY --chown=node:node web/package.json .
 COPY --chown=node:node yarn.lock yarn.lock
 
 RUN --mount=type=cache,target=/home/node/.yarn/berry/cache,uid=1000 \
     --mount=type=cache,target=/home/node/.cache,uid=1000 \
-    yarn workspaces focus web --production
+    CI=1 yarn workspaces focus web --production
 
 RUN yarn cache clean
 
@@ -120,7 +110,7 @@ COPY --chown=node:node graphql.config.js .
 
 COPY --chown=node:node --from=web_build /home/node/app/web/dist /home/node/app/web/dist
 
-# Shell form is used to allow for variable substitution
+# We use the shell form here for variable expansion.
 CMD "node_modules/.bin/rw-server" "web" "--apiHost" "$API_HOST"
 
 # console
