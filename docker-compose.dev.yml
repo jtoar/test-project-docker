@@ -55,7 +55,7 @@ services:
 
   # Postgres DB
   db:
-    image: postgres:12.4-alpine
+    image: postgres:15-bookworm
     environment:
       POSTGRES_USER: redwood
       POSTGRES_PASSWORD: redwood
