@@ -2,7 +2,7 @@
 # ------------------------------------------------
 FROM node:18-bookworm-slim as base
 
-RUN apt-get update || : && apt-get install -y \
+RUN apt-get update && apt-get install -y \
     python3 \
     build-essential \
     openssl \
@@ -55,7 +55,7 @@ FROM node:18-bookworm-slim as api_serve
 
 ENV NODE_ENV=production
 
-RUN apt-get update || : && apt-get install -y \
+RUN apt-get update && apt-get install -y \
     openssl \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -122,7 +122,7 @@ FROM base as console
 # ```
 # USER root
 #
-# RUN apt-get update || : && apt-get install -y \
+# RUN apt-get update && apt-get install -y \
 #     curl
 #
 # USER node
