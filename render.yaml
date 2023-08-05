@@ -1,0 +1,53 @@
+# See the Redwood docs: https://render.com/docs/deploy-redwood.
+# And Render's Blueprint spec: https://render.com/docs/blueprint-spec
+
+services:
+- name: test-project-docker-web
+  type: web
+
+  runtime: static
+  buildCommand: yarn install && yarn rw deploy render web
+  staticPublishPath: ./web/dist
+
+  envVars:
+  - key: NODE_VERSION
+    value: 18
+
+  - key: SKIP_INSTALL_DEPS
+    value: true
+
+  - key: DATABASE_URL
+    fromDatabase:
+      name: test-project-docker-db
+      property: connectionString
+
+  routes:
+  - type: rewrite
+    source: /*
+    destination: /index.html
+
+    # Replace the `destination` for this route after your first deploy to Render:
+    #
+    # ```yml
+    # destination: https://myredwoodproject-api.onrender.com/*
+    # ```
+  - type: rewrite
+    source: /.redwood/functions/*
+    destination: https://test-project-docker-api-bxz6.onrender.com/*
+
+- name: test-project-docker-api
+  type: web
+  plan: free
+
+  runtime: docker
+
+  envVars:
+  - key: DATABASE_URL
+    fromDatabase:
+      name: test-project-docker-db
+      property: connectionString
+
+databases:
+  - name: test-project-docker-db
+    plan: free
+
