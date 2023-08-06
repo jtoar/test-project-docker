@@ -1,0 +1,24 @@
+# fly.toml app configuration file generated for winter-sound-9444 on 2023-08-06T19:50:20-07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+
+app = "winter-sound-9444"
+primary_region = "sjc"
+
+[build]
+  build-target = "api_serve"
+
+[deploy]
+  release_command = "npx prisma migrate deploy --schema /home/node/app/api/db/schema.prisma"
+
+[env]
+  PORT = "8911"
+  REDWOOD_DISABLE_TELEMETRY = "1"
+
+[http_service]
+  internal_port = 8911
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]

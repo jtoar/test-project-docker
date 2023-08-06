@@ -100,7 +100,7 @@ COPY --chown=node:node graphql.config.js .
 COPY --chown=node:node --from=web_build /home/node/app/web/dist /home/node/app/web/dist
 
 ENV NODE_ENV=production \
-    API_HOST=http://api:8911
+    API_HOST="https://winter-sound-9444.fly.dev/"
 
 # We use the shell form here for variable expansion.
 CMD "node_modules/.bin/rw-server" "web" "--apiHost" "$API_HOST"
