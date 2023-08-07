@@ -7,7 +7,10 @@
     ]
   },
   "scripts": {
-    "compose:console": "docker compose -f ./docker-compose.dev.yml run --rm console /bin/bash"
+    "compose:console": "docker compose -f ./docker-compose.dev.yml run --rm console /bin/bash",
+    "compose:build:dev": "docker compose -f ./docker-compose.dev.yml build",
+    "compose:run:dev": "docker compose -f ./docker-compose.dev.yml up",
+    "compose:stop:dev": "docker compose -f ./docker-compose.dev.yml down"
   },
   "eslintConfig": {
     "extends": "@redwoodjs/eslint-config",
