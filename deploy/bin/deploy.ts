@@ -1,6 +1,8 @@
 #!/usr/bin/env node
-import * as cdk from 'aws-cdk-lib';
-import { DeployStack } from '../lib/deploy-stack';
+import * as cdk from 'aws-cdk-lib'
 
-const app = new cdk.App();
-new DeployStack(app, 'DeployStack');
+import { DeployStack } from '../lib/deploy-stack'
+
+const app = new cdk.App()
+// eslint-disable-next-line no-new
+new DeployStack(app, 'RedwoodBlog')
