@@ -1,3 +1,5 @@
+import * as path from 'path'
+
 import { Stack, StackProps } from 'aws-cdk-lib'
 import * as ec2 from 'aws-cdk-lib/aws-ec2'
 import * as ecs from 'aws-cdk-lib/aws-ecs'
@@ -16,6 +18,12 @@ export class DeployStack extends Stack {
       vpc: vpc,
     })
 
+    const projDir = path.resolve(__dirname, '../..')
+    console.log('********************** ', projDir)
+    const image = ecs.ContainerImage.fromAsset(projDir, {
+      target: 'api_serve',
+    })
+
     // eslint-disable-next-line no-new
     new ecsPatterns.ApplicationLoadBalancedFargateService(
       this,
@@ -24,9 +32,7 @@ export class DeployStack extends Stack {
         cluster: cluster,
         cpu: 512,
         desiredCount: 1,
-        taskImageOptions: {
-          image: ecs.ContainerImage.fromRegistry('amazon/amazon-ecs-sample'),
-        },
+        taskImageOptions: { image: image },
         memoryLimitMiB: 2048,
         publicLoadBalancer: true,
       }
