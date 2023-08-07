@@ -163,5 +163,14 @@ cdk bootstrap aws://ACCOUNT-NUMBER/REGION
 This will create a 'Stack' called CDKToolkit in [CloudFormation | Stacks](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks?filteringText=&filteringStatus=active&viewNested=true)
 
 
+### Useful cdk commands
 
+* `npm run build`   compile typescript to js
+* `npm run watch`   watch for changes and compile
+* `npm run test`    perform the jest unit tests
+* `cdk deploy`      deploy this stack to your default AWS account/region
+* `cdk diff`        compare deployed stack with current state
+* `cdk synth`       emits the synthesized CloudFormation template
+
+The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
