@@ -139,3 +139,29 @@ The best way to learn Redwood is by going through the comprehensive [tutorial](h
 
 - Stay updated: read [Forum announcements](https://community.redwoodjs.com/c/announcements/5), follow us on [Twitter](https://twitter.com/redwoodjs), and subscribe to the [newsletter](https://redwoodjs.com/newsletter)
 - [Learn how to contribute](https://redwoodjs.com/docs/contributing)
+
+
+## CDK Notes
+
+### Setup
+
+Install cdk
+
+```sh
+npm install -g aws-cdk
+```
+
+CDK requires dedicated AWS buckets to setup for Cloudformation to use during deployment. This is called 'Bootstrapping', to bootstrap use:
+
+```sh
+cdk bootstrap aws://ACCOUNT-NUMBER/REGION
+```
+
+> To get your account number you can use: `aws sts get-caller-identity`
+> To get the region configured for your aws profile you can use: `aws configure get region`
+
+This will create a 'Stack' called CDKToolkit in [CloudFormation | Stacks](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks?filteringText=&filteringStatus=active&viewNested=true)
+
+
+
+
