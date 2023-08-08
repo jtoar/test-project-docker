@@ -27,6 +27,7 @@ export class DeployStack extends Stack {
     const image = ecs.ContainerImage.fromAsset(projDir, {
       target: 'api_serve',
       platform: Platform.LINUX_AMD64,
+      file: 'Dockerfile',
     })
 
     const apiService = new ecsPatterns.ApplicationLoadBalancedFargateService(
@@ -39,7 +40,7 @@ export class DeployStack extends Stack {
         taskImageOptions: {
           image: image,
           command: ['node_modules/.bin/rw-server', 'api'],
-          containerPort: 8910,
+          containerPort: 8911,
         },
         memoryLimitMiB: 2048,
         publicLoadBalancer: true,
@@ -48,7 +49,7 @@ export class DeployStack extends Stack {
 
     // https://your.server/graphql?query=%7B__typename%7D
     apiService.targetGroup.configureHealthCheck({
-      path: 'graphql?query={__typename}',
+      path: '/graphql?query={__typename}',
     })
   }
 }
