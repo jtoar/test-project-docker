@@ -13,8 +13,8 @@
     "compose:build:prod": "docker compose -f ./docker-compose.prod.yml build",
     "compose:run:dev": "docker compose -f ./docker-compose.dev.yml up",
     "compose:stop:dev": "docker compose -f ./docker-compose.dev.yml down",
-    "compose:start:prod": "docker compose -f ./docker-compose.prod.yml -f ./docker-compose.override.yml up",
-    "compose:stop:prod": "docker compose -f ./docker-compose.prod.yml -f ./docker-compose.override.yml down",
+    "compose:start:prod": "docker compose -f ./docker-compose.prod.yml  up",
+    "compose:stop:prod": "docker compose -f ./docker-compose.prod.yml -f ./docker-compose.override.yml down -v",
     "compose:ps:prod": "docker compose -f ./docker-compose.prod.yml ps"
   },
   "eslintConfig": {
@@ -22,7 +22,8 @@
     "root": true
   },
   "devDependencies": {
-    "@redwoodjs/core": "6.0.2"
+    "@redwoodjs/core": "6.0.2",
+    "@redwoodjs/web-server": "0.0.1"
   },
   "packageManager": "yarn@3.6.1",
   "engines": {

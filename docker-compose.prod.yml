@@ -25,6 +25,8 @@ services:
       - /tmp
     command: "true"
     environment:
+      - API_HOST=api
+      - API_PORT=8911
       - DATABASE_URL=postgresql://redwood:redwood@db:5432/redwood
       - TEST_DATABASE_URL=postgresql://redwood:redwood@db:5432/redwood_test
     depends_on:
@@ -45,10 +47,11 @@ services:
       - DATABASE_URL=postgresql://redwood:redwood@db:5432/redwood
       - TEST_DATABASE_URL=postgresql://redwood:redwood@db:5432/redwood_test
       - SESSION_SECRET=super_secret_session_key_change_me_in_production_please
+    command: "node_modules/.bin/rw-server api"
 
   # Redwood Web
   web:
-    image: redwoodjs-project/web-serve:latest
+    image: redwoodjs-project/web:latest
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -58,7 +61,7 @@ services:
     depends_on:
       - api
     environment:
-      - API_HOST=http://api:8911
+      - API_HOST=http://localhost:8911
 
   # Postgres DB
   db:
@@ -67,7 +70,11 @@ services:
       POSTGRES_USER: redwood
       POSTGRES_PASSWORD: redwood
       POSTGRES_DB: redwood
-    ports:
-      - "5432:5432"
+    # ports:
+    #   - "5432:5432"
     volumes:
-      - ./postgres:/var/lib/postgresql/data
+      - postgres:/var/lib/postgresql/data
+      #- ./postgres:/var/lib/postgresql/data
+volumes:
+  #node_modules:
+  postgres:

@@ -109,9 +109,11 @@ COPY --chown=node:node redwood.toml .
 COPY --chown=node:node graphql.config.js .
 
 COPY --chown=node:node --from=web_build /home/node/app/web/dist /home/node/app/web/dist
+COPY --chown=node:node --from=web_build /home/node/app/web/start-web.sh /home/node/app/web/start-web.sh
 
 # We use the shell form here for variable expansion.
-CMD "node_modules/.bin/rw-server" "web" "--apiHost" "$API_HOST"
+# CMD "/bin/sh" "-c" "node_modules/.bin/rw-web-server" "--apiHost" "$API_HOST"
+CMD "web/start-web.sh"
 
 # console
 # ------------------------------------------------
