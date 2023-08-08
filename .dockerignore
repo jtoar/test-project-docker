@@ -16,5 +16,6 @@ api/dist
 
 **/.git
 
-deploy
+**cdk**
+deploy/**
 npm-debug.log
